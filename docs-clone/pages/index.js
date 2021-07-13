@@ -4,7 +4,6 @@ import Header from "../components/Header";
 import Icon from "@material-tailwind/react/Icon";
 import Image from "next/image";
 
-
 export default function Home() {
   return (
     <div>
