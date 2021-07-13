@@ -4,7 +4,12 @@ import Header from "../components/Header";
 import Icon from "@material-tailwind/react/Icon";
 import Image from "next/image";
 
+import { getSession, useSession } from "next-auth/client";
+import Login from "../components/Login";
+
 export default function Home() {
+  const [session] = useSession();
+  if (!session) return <Login />;
   return (
     <div>
       <Head>
@@ -69,4 +74,15 @@ export default function Home() {
       </section>
     </div>
   );
+}
+
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  return {
+    props: {
+      session,
+    },
+  };
 }
