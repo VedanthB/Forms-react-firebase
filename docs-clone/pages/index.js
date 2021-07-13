@@ -1,25 +1,93 @@
-import Head from "next/head";
 import Button from "@material-tailwind/react/Button";
-import Header from "../components/Header";
 import Icon from "@material-tailwind/react/Icon";
+import Head from "next/head";
 import Image from "next/image";
+import Header from "../components/Header";
+import Login from "../components/Login";
+import Modal from "@material-tailwind/react/Modal";
+import ModalBody from "@material-tailwind/react/ModalBody";
+import ModalFooter from "@material-tailwind/react/ModalFooter";
+import firebase from "firebase";
+import DocumentRow from "../components/DocumentRow";
 
 import { getSession, useSession } from "next-auth/client";
-import Login from "../components/Login";
+import { useState } from "react";
+import { db } from "../firebase";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 export default function Home() {
-  const [session] = useSession();
+  const [session] = useSession(); // Fonctionne grâce au <Provider> dans "_app.js"
   if (!session) return <Login />;
+
+  const [showModal, setShowModal] = useState(false);
+  const [input, setInput] = useState("");
+  const [snapshot] = useCollection(
+    db
+      .collection("userDocs")
+      .doc(session.user.email)
+      .collection("docs")
+      .orderBy("timestamp", "desc")
+  );
+
+  function createDocument() {
+    if (!input || input.toString().trim() === "") return;
+
+    db.collection("userDocs").doc(session.user.email).collection("docs").add({
+      fileName: input,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+
+    setInput("");
+    setShowModal(false);
+  }
+
+  function deleteDocument(id) {
+    db.collection("userDocs")
+      .doc(session.user.email)
+      .collection("docs")
+      .doc(id)
+      .delete();
+  }
+
+  const modal = (
+    <Modal active={showModal} toggler={() => setShowModal(false)}>
+      <ModalBody>
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          className="outline-none"
+          placeholder="Enter name of the document..."
+          onKeyDown={(e) => e.key === "Enter" && createDocument()}
+        />
+      </ModalBody>
+      <ModalFooter>
+        <Button
+          color="blue"
+          buttonType="link"
+          onClick={(e) => setShowModal(false)}
+          ripple="dark"
+        >
+          Cancel
+        </Button>
+
+        <Button color="blue" onClick={createDocument} ripple="light">
+          Create
+        </Button>
+      </ModalFooter>
+    </Modal>
+  );
+
   return (
     <div>
       <Head>
-        <title>OG Docs</title>
+        <title>Google Docs Clone</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />
 
-      {/* {modal} */}
+      {modal}
 
       <section className="bg-[#f8f9fa] pb-10 px-10">
         <div className="max-w-3xl mx-auto">
@@ -39,7 +107,7 @@ export default function Home() {
           <div>
             <div
               className="relative h-52 w-40 border-2 cursor-pointer hover:border-blue-700 transition-colors duration-300"
-              // onClick={() => setShowModal(true)}
+              onClick={() => setShowModal(true)}
             >
               <Image src="https://links.papareact.com/pju" layout="fill" />
             </div>
@@ -61,7 +129,7 @@ export default function Home() {
         </div>
 
         <div className="max-w-3xl mx-auto text-gray-700">
-          {/* {snapshot?.docs.map((doc) => (
+          {snapshot?.docs.map((doc) => (
             <DocumentRow
               key={doc.id}
               id={doc.id}
@@ -69,13 +137,12 @@ export default function Home() {
               date={doc.data().timestamp}
               onDelete={deleteDocument}
             />
-          ))} */}
+          ))}
         </div>
       </section>
     </div>
   );
 }
-
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
