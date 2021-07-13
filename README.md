@@ -1,39 +1,56 @@
-# docs/forms clone (Next.js, Rich Text Editor, Tailwind CSS & Firebase)
+# docs/forms clone (Next.js, Rich Text Editor, Tailwind CSS & Firebase)🔥🔥🔥🔥🔥
 
 completely responsive real-time Google Docs clone with Tailwind CSS & Next.js.
 
 live : 
 
-# Technologies and packages used 
+# Technologies and packages used 🔥🔥🔥🔥🔥
 
 NextJS | Firebase | Next-Auth | Draft-JS | Material-Tailwind | Tailwind CSS | Next-Auth/Firebase-Adapter | React-Firebase-Hooks | React-Draft-wysiwyg
 
-# This app was bootstrapped with Next.js + Tailwind CSS Example
+### Installing dependencies
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
-
-It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
-
-## Preview
-
-Preview the example live on [StackBlitz](http://stackblitz.com/):
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+If you use yarn then run
 
 ```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
+yarn install
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+and if you use npm delete yarn.lock and run
+
+```bash
+npm install
+```
+
+### Creating a new branch
+
+```bash
+git checkout -b new-feature
+```
+
+### Starting server
+
+If you are using yarn then run
+
+```bash
+yarn dev
+```
+
+and if you using npm run
+
+```bash
+npm run dev
+```
+
+### Setting up next auth
+
+If you don't know about next auth follow this
+[tutorial](https://medium.com/geekculture/why-and-how-to-get-started-with-next-auth-61740558b45b "Next auth crash course")
+tutorial and get your credentials.
+And your .env.local file will look like this
+
+```bash
+GOOGLE_CLIENT_ID=client_id
+GOOGLE_CLIENT_SECRET=client_secret
+NEXTAUTH_URL=http://localhost:3000/
+```
