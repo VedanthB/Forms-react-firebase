@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
       <Provider session={pageProps.session}>
-        <Component {...pageProps} />
+        <Component  {...pageProps} />
       </Provider>
     </>
   );

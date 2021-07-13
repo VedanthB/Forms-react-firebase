@@ -7,7 +7,7 @@ function Header() {
   const [session] = useSession();
 
   return (
-    <div className="flex items-center sticky top-0 z-50 px-4 py-2 shadow-md bg-white w-full">
+    <div className="flex items-center sticky top-0 z-50 px-4 py-2 shadow-md bg-gray-800 w-full">
       <Button
         color="gray"
         buttonType="outline"
@@ -24,12 +24,12 @@ function Header() {
 
       <h1 className="md:inline-flex ml-3 text-gray-700 text-xl">Docs</h1>
 
-      <div className="flex flex-grow items-center mx-5 p-5 py-2 bg-gray-100 rounded-md md:mx-20 focus-within:text-gray-600 focus-within:shadow-md">
-        <Icon name="search" size="3xl" color="gray" />
+      <div className="flex flex-grow items-center mx-5 p-5 py-2 bg-gray-500 rounded-md md:mx-20 focus-within:text-gray-600 focus-within:shadow-md">
+        <Icon name="search" size="3xl" color="white" />
         <input
           type="text"
           placeholder="Search"
-          className="flex-grow focus:outline-none bg-transparent text-gray-800 ml-2"
+          className="flex-grow focus:outline-none bg-transparent text-white ml-2"
         />
       </div>
 
