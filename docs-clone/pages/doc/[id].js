@@ -74,7 +74,7 @@ function Doc() {
         />
       </header>
 
-      {/* <TextEditor /> */}
+      <TextEditor />
     </div>
   );
 }
