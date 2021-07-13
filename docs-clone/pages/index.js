@@ -79,9 +79,9 @@ export default function Home() {
   );
 
   return (
-    <div>
+    <div >
       <Head>
-        <title>Google Docs Clone</title>
+        <title>Docs Next.js</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -119,7 +119,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white px:10 md:px-0">
+      <section className=" px:10 md:px-0">
         <div className="max-w-3xl mx-auto pt-8 text-gray-700">
           <div className="flex items-center justify-between pb-5 pr-5">
             <h2 className="font-medium flex-grow px-5">My Documents</h2>

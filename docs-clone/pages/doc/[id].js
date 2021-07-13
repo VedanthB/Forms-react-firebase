@@ -30,12 +30,12 @@ function Doc() {
   } */
 
   return (
-    <div>
+    <div >
       <Head>
         <title>{snapshot?.data()?.fileName}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className="flex justify-between items-center p-3 pb-1">
+      <header className="bg-gray-800 flex justify-between items-center p-3 pb-1">
         <Link href="/">
           <a>
             <Icon name="description" size="5xl" color="blue" />
@@ -43,8 +43,8 @@ function Doc() {
         </Link>
 
         <div className="flex-grow px-2">
-          <h2>{snapshot?.data()?.fileName}</h2>
-          <div className="flex items-center text-sm space-x-1 -ml-1 h-8 text-gray-600">
+          <h2 className="text-white">{snapshot?.data()?.fileName}</h2>
+          <div className="flex items-center text-sm space-x-1 -ml-1 h-8 text-white">
             <p className="option">File</p>
             <p className="option">Edit</p>
             <p className="option">View</p>
