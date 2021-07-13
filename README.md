@@ -2,6 +2,8 @@
 
 completely responsive real-time Google Docs clone with Tailwind CSS & Next.js.
 
+live : 
+
 # Technologies and packages used 
 
 NextJS | Firebase | Next-Auth | Draft-JS | Material-Tailwind | Tailwind CSS | Next-Auth/Firebase-Adapter | React-Firebase-Hooks | React-Draft-wysiwyg
